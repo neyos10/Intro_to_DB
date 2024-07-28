@@ -13,22 +13,23 @@ def create_database(db_name):
             password='your_password'
         )
 
-        # Create a cursor object
-        cursor = connection.cursor()
+        if connection.is_connected():
+            # Create a cursor object
+            cursor = connection.cursor()
 
-        # Create the database if it doesn't already exist
-        cursor.execute(f"CREATE DATABASE IF NOT EXISTS `{db_name}`")
+            # Create the database if it doesn't already exist
+            cursor.execute(f"CREATE DATABASE IF NOT EXISTS `{db_name}`")
 
-        # Commit the changes
-        connection.commit()
+            # Commit the changes
+            connection.commit()
 
-        print(f"Database '{db_name}' created successfully!")
+            print(f"Database '{db_name}' created successfully!")
 
     except Error as e:
         print(f"Error: {e}")
 
     finally:
-        if 'connection' in locals():
+        if 'connection' in locals() and connection.is_connected():
             # Close the cursor and connection
             cursor.close()
             connection.close()
