@@ -16,8 +16,8 @@ def create_database(db_name):
         # Create a cursor object
         cursor = connection.cursor()
 
-        # Create the database
-        cursor.execute(f"CREATE DATABASE IF NOT EXISTS '{db_name}'")
+        # Create the database if it doesn't already exist
+        cursor.execute(f"CREATE DATABASE IF NOT EXISTS `{db_name}`")
 
         # Commit the changes
         connection.commit()
