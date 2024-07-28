@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # MySQLServer.py
 
 import mysql.connector
